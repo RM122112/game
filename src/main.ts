@@ -1,5 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import './styles/style.scss'
+import { configurePrimeVue } from './components/organisms/Mode'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+configurePrimeVue(app)
+app.mount('#app')
