@@ -183,7 +183,7 @@ onUnmounted(() => {
           type="button"
           @click="resetTimer"
           :disabled="loading">
-        ⏱ Reset
+        ⏱ Zurücksetzen
       </button>
     </div>
 
@@ -199,7 +199,7 @@ onUnmounted(() => {
       <div v-else-if="solved" class="overlay win">
         <strong>Gelöst! 🎉</strong>
         <span>{{ DIFFICULTIES[difficulty].label }} in {{ timeLabel }} · {{ mistakes }} Fehler</span>
-        <button type="button" @click="newGame()">new game</button>
+        <button type="button" @click="newGame()">Neues Spiel</button>
       </div>
     </div>
 
@@ -217,7 +217,7 @@ onUnmounted(() => {
     </div>
 
     <button type="button" class="new" :disabled="loading" @click="newGame()">
-      new game
+      Neues Spiel
     </button>
 
     <p class="hint">Tastatur: Ziffern 1–9, Pfeiltasten, Entf/Backspace zum Löschen</p>

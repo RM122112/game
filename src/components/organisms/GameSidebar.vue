@@ -7,7 +7,7 @@ defineEmits<{ select: [id: string] }>()
 </script>
 
 <template>
-  <aside class="sidebar" aria-label="more games">
+  <aside class="sidebar" aria-label="Weitere Spiele">
     <h2>Weitere Spiele</h2>
     <div class="grid">
       <GameCard
