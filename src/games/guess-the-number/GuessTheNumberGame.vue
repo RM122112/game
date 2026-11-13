@@ -1,21 +1,22 @@
 <script setup lang="ts">
-import {ref} from 'vue'
-import {guessNumber, resetGuessGame} from './guessTheNumber'
+import { ref } from 'vue'
+import { createGuessGame } from './guessTheNumber'
 
 const guess = ref<number | null>(null)
 const feedback = ref<string | null>(null)
+const game = createGuessGame()
 
 function makeGuess() {
   if (guess.value === null) {
-    feedback.value = 'Enter a number.'
+    feedback.value = 'Bitte gib eine Zahl ein.'
     return
   }
 
-  feedback.value = guessNumber(guess.value)
+  feedback.value = game.guessNumber(guess.value)
 }
 
 function resetGame() {
-  resetGuessGame()
+  game.reset()
   guess.value = null
   feedback.value = null
 }
@@ -23,11 +24,11 @@ function resetGame() {
 
 <template>
   <main class="guess-game">
-    <h1>Guess the Number</h1>
-    <p>Choose a number between 1 and 200.</p>
+    <h1>Zahlenraten</h1>
+    <p>Wähle eine Zahl zwischen 1 und 200.</p>
 
     <form class="guess-form" @submit.prevent="makeGuess">
-      <label for="guess">Your guess</label>
+      <label for="guess">Deine Zahl</label>
       <input
           id="guess"
           v-model.number="guess"
@@ -36,11 +37,11 @@ function resetGame() {
           max="200"
           required
       />
-      <button type="submit">Guess</button>
+      <button type="submit">Raten</button>
     </form>
 
     <p v-if="feedback" aria-live="polite">{{ feedback }}</p>
-    <button type="button" @click="resetGame">Reset Game</button>
+    <button type="button" @click="resetGame">Zurücksetzen</button>
   </main>
 </template>
 
@@ -50,15 +51,14 @@ function resetGame() {
 .guess-game {
   display: grid;
   justify-items: center;
-  gap: 1rem;
-  margin: 120px 130px;
-  padding: 12px 12px;
+  gap: $space-4;
+  width: min(100% - #{$space-4 * 2}, 28rem);
+  margin: $space-6 auto;
+  padding: $space-5;
   text-align: center;
   border: 1px solid var(--error);
   border-radius: $radius-lg;
   background: linear-gradient(90deg, var(--error-bg) 0%, var(--error-bg-strong) 100%);
-  width: 120px;
-  height: 120px;
 }
 
 .guess-game h1,
@@ -68,7 +68,7 @@ function resetGame() {
 
 .guess-form {
   display: grid;
-  gap: 0.5rem;
+  gap: $space-2;
   width: min(100%, 20rem);
   text-align: left;
 }

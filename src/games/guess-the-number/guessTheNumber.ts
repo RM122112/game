@@ -1,20 +1,28 @@
 function createRandomNumber(): number {
-    return Math.floor(Math.random() * 200) + 1
+  return Math.floor(Math.random() * 200) + 1
 }
 
-let randomNumber = createRandomNumber()
-let attempts = 0
-
-export function guessNumber(userGuess: number): string {
-    attempts++
-
-    if (userGuess < randomNumber) return 'Too low! Try again.'
-    if (userGuess > randomNumber) return 'Too high! Try again.'
-
-    return `Congratulations! You've guessed the number ${randomNumber} in ${attempts} attempts.`
+export interface GuessGame {
+  guessNumber(userGuess: number): string
+  reset(): void
 }
 
-export function resetGuessGame(): void {
-    randomNumber = createRandomNumber()
-    attempts = 0
+export function createGuessGame(): GuessGame {
+  let randomNumber = createRandomNumber()
+  let attempts = 0
+
+  return {
+    guessNumber(userGuess: number): string {
+      attempts++
+
+      if (userGuess < randomNumber) return 'Zu niedrig! Versuch es noch einmal.'
+      if (userGuess > randomNumber) return 'Zu hoch! Versuch es noch einmal.'
+
+      return `Glückwunsch! Du hast die Zahl ${randomNumber} in ${attempts} Versuchen erraten.`
+    },
+    reset(): void {
+      randomNumber = createRandomNumber()
+      attempts = 0
+    },
+  }
 }
