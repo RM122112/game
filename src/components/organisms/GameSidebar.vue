@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import GameCard from './GameCard.vue'
-import type { GameInfo } from '../logic/games'
+import GameCard from '@/components/molecules/GameCard.vue'
+import type { GameInfo } from '@/data/games'
 
 defineProps<{ games: GameInfo[]; activeId: string  }>()
 defineEmits<{ select: [id: string] }>()
 </script>
 
 <template>
-  <aside class="sidebar" aria-label="more games">
+  <aside class="sidebar" aria-label="Weitere Spiele">
     <h2>Weitere Spiele</h2>
     <div class="grid">
       <GameCard
@@ -21,22 +21,24 @@ defineEmits<{ select: [id: string] }>()
   </aside>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '@/styles/abstracts' as *;
+
 .sidebar {
   position: sticky;
   top: 0;
   height: 100vh;
   overflow-y: auto;
-  padding: 1rem;
-  background: #14161f;
+  padding: $space-4;
+  background: var(--sidebar-bg);
   box-sizing: border-box;
-  border: 4px solid #c62828;
-  border-radius: 10px;
+  border: 4px solid var(--sidebar-border);
+  border-radius: $radius-md;
 }
-h2 { color: #fff; margin: 0 0 0.75rem; font-size: 1.1rem; }
+h2 { color: var(--on-sidebar); margin: 0 0 $space-3; font-size: $font-size-lg; }
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
+  gap: $space-3;
 }
 </style>

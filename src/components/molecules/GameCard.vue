@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { GameInfo } from '../logic/games'
+import type { GameInfo } from '@/data/games'
 
 defineProps<{ game: GameInfo; active: boolean }>()
 defineEmits<{ select: [] }>()
@@ -11,7 +11,6 @@ defineEmits<{ select: [] }>()
       type="button"
       class="card"
       :class="{active}"
-      :style="{ background: game.thumbnail ? undefined : game.color }"
       :aria-pressed="active"
       @click="$emit('select')"
   >
@@ -22,18 +21,20 @@ defineEmits<{ select: [] }>()
   </button>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '@/styles/abstracts' as *;
+
 .card {
   all: unset;
   position: relative;
   aspect-ratio: 16 / 10;
-  border-radius: 14px;
+  border-radius: $radius-md;
   overflow: hidden;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 8px rgb(0 0 0 / 0.25);
+  box-shadow: $shadow-card;
   transition: transform 0.15s, box-shadow 0.15s;
 }
 
@@ -42,12 +43,11 @@ defineEmits<{ select: [] }>()
 }
 
 .card:focus-visible {
-  outline: 3px solid #fff;
-  outline-offset: 2px;
+  @include focus-ring;
 }
 
 .card.active {
-  box-shadow: 0 0 0 3px #fff, 0 4px 14px rgb(0 0 0 / 0.4);
+  box-shadow: $shadow-active;
 }
 
 .thumb {
@@ -69,8 +69,8 @@ defineEmits<{ select: [] }>()
   bottom: 0;
   padding: 0.4rem 0.6rem;
   font-weight: 700;
-  color: #fff;
-  background: linear-gradient(transparent, rgb(0 0 0 / 0.6));
+  color: var(--on-sidebar);
+  background: linear-gradient(transparent, var(--card-overlay));
 }
 
 .badge {
@@ -78,10 +78,10 @@ defineEmits<{ select: [] }>()
   top: 6px;
   left: 6px;
   padding: 2px 8px;
-  border-radius: 8px;
-  font-size: 0.75rem;
+  border-radius: $radius-sm;
+  font-size: $font-size-sm;
   font-weight: 700;
-  background: #fff;
-  color: #5b3df5;
+  background: var(--badge-bg);
+  color: var(--badge-text);
 }
 </style>

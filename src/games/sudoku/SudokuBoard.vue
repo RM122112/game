@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Grid } from '../logic/sudoku'
+import type { Grid } from '@/games/sudoku/sudoku'
 
 const props = defineProps<{
   grid: Grid
@@ -57,7 +57,9 @@ function cellClass(i: number) {
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '@/styles/abstracts' as *;
+
 .board {
   display: grid;
   grid-template-columns: repeat(9, 1fr);
@@ -74,7 +76,7 @@ function cellClass(i: number) {
   align-items: center;
   justify-content: center;
   background: var(--paper);
-  font-size: clamp(1.1rem, 4.5vw, 1.7rem);
+  font-size: clamp($font-size-lg, 4.5vw, 1.7rem);
   color: var(--user);
   cursor: pointer;
   user-select: none;
