@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from 'vue'
-import type { Grid } from '../logic/sudoku'
+import type { Grid } from '@/games/sudoku/sudoku'
 
 const props = defineProps<{
   grid: Grid

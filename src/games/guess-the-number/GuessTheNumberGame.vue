@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {ref} from 'vue'
-import {guessNumber, resetGuessGame} from '../logic/GuessTheNumber'
+import {guessNumber, resetGuessGame} from './guessTheNumber'
 
 const guess = ref<number | null>(null)
 const feedback = ref<string | null>(null)

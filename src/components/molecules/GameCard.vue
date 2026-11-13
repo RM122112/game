@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { GameInfo } from '../logic/games'
+import type { GameInfo } from '@/data/games'
 
 defineProps<{ game: GameInfo; active: boolean }>()
 defineEmits<{ select: [] }>()

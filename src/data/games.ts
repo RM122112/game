@@ -10,7 +10,7 @@ export interface GameInfo {
 }
 
 const comingSoon = defineAsyncComponent(
-  () => import('../components/ComingSoon.vue'),
+  () => import('@/games/coming-soon/ComingSoon.vue'),
 )
 
 const thumbnails = import.meta.glob('../assets/thumbnails/*.svg', {
@@ -28,14 +28,14 @@ export const games: GameInfo[] = [
     emoji: '🧩',
     thumbnail: image('sudoku'),
     badge: 'neu',
-    component: defineAsyncComponent(() => import('../components/SudokuGame.vue')),
+    component: defineAsyncComponent(() => import('@/games/sudoku/SudokuGame.vue')),
   },
   {
     id: 'guess-the-number',
     title: 'Zahlenraten',
     emoji: '🔢',
     thumbnail: image('guess-the-number'),
-    component: defineAsyncComponent(() => import('../components/guessTheNumber.vue')),
+    component: defineAsyncComponent(() => import('@/games/guess-the-number/GuessTheNumberGame.vue')),
   },
   {
     id: 'tic-tac-toe',

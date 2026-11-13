@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import GameCard from './GameCard.vue'
-import type { GameInfo } from '../logic/games'
+import GameCard from '@/components/molecules/GameCard.vue'
+import type { GameInfo } from '@/data/games'
 
 defineProps<{ games: GameInfo[]; activeId: string  }>()
 defineEmits<{ select: [id: string] }>()

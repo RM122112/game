@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
-import GameSidebar from './components/GameSidebar.vue'
-import { games } from './logic/games'
+import AppLayout from '@/components/templates/AppLayout.vue'
+import GameSidebar from '@/components/organisms/GameSidebar.vue'
+import { games } from '@/data/games'
 
 const activeId = ref(games[0].id)
 const activeGame = computed(
@@ -10,24 +11,12 @@ const activeGame = computed(
 </script>
 
 <template>
-  <div class="layout">
-    <section class="stage">
+  <AppLayout>
+    <template #stage>
       <component :is="activeGame.component" :key="activeGame.id" />
-    </section>
-    <GameSidebar :games="games" :active-id="activeId" @select="activeId = $event" />
-  </div>
+    </template>
+    <template #sidebar>
+      <GameSidebar :games="games" :active-id="activeId" @select="activeId = $event" />
+    </template>
+  </AppLayout>
 </template>
-
-<style scoped>
-.layout {
-  display: grid;
-  grid-template-columns: 1fr minmax(280px, 360px);
-  min-height: 100vh;
-}
-.stage { min-width: 0; }
-
-@media (max-width: 900px) {
-  .layout { grid-template-columns: 1fr; }
-  .layout :deep(.sidebar) { position: static; height: auto; }
-}
-</style>

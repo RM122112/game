@@ -6,7 +6,7 @@ import {
   generatePuzzle,
   type Difficulty,
   type Grid,
-} from '../logic/sudoku'
+} from '@/games/sudoku/sudoku'
 
 const difficulty = ref<Difficulty>('leicht')
 const grid = ref<Grid>(new Array(81).fill(0))
