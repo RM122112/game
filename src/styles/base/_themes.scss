@@ -25,30 +25,38 @@
   --radius-card: 14px;
 }
 
+@mixin dark-theme {
+  --ink: #e6e6e6;
+  --paper: #1e2129;
+  --bg: #14161b;
+  --user: #8fb4ff;
+  --peer: #262a34;
+  --same: #2c3850;
+  --select: #34476b;
+  --error: #ff7b7b;
+  --error-bg: #3d2224;
+  --error-bg-strong: #552a2d;
+  --accent: #8fb4ff;
+  --muted: #9aa0aa;
+  --sidebar-bg: #101117;
+  --sidebar-border: #ff7b7b;
+  --on-sidebar: #fff;
+  --badge-bg: #fff;
+  --badge-text: #5b3df5;
+  --surface-border: color-mix(in srgb, var(--ink) 30%, transparent);
+  --focus-ring: #fff;
+  --active-ring: #fff;
+  --shadow-color: rgb(0 0 0 / 0.4);
+  --shadow-color-strong: rgb(0 0 0 / 0.6);
+  --card-overlay: rgb(0 0 0 / 0.7);
+}
+
+:root.my-app-dark {
+  @include dark-theme;
+}
+
 @media (prefers-color-scheme: dark) {
-  :root {
-    --ink: #e6e6e6;
-    --paper: #1e2129;
-    --bg: #14161b;
-    --user: #8fb4ff;
-    --peer: #262a34;
-    --same: #2c3850;
-    --select: #34476b;
-    --error: #ff7b7b;
-    --error-bg: #3d2224;
-    --error-bg-strong: #552a2d;
-    --accent: #8fb4ff;
-    --muted: #9aa0aa;
-    --sidebar-bg: #101117;
-    --sidebar-border: #ff7b7b;
-    --on-sidebar: #fff;
-    --badge-bg: #fff;
-    --badge-text: #5b3df5;
-    --surface-border: color-mix(in srgb, var(--ink) 30%, transparent);
-    --focus-ring: #fff;
-    --active-ring: #fff;
-    --shadow-color: rgb(0 0 0 / 0.4);
-    --shadow-color-strong: rgb(0 0 0 / 0.6);
-    --card-overlay: rgb(0 0 0 / 0.7);
+  :root:not(.my-app-light) {
+    @include dark-theme;
   }
 }
