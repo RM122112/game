@@ -7,7 +7,9 @@
   </div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '@/styles/abstracts' as *;
+
 .layout {
   display: grid;
   grid-template-columns: 1fr minmax(280px, 360px);
@@ -18,7 +20,7 @@
   min-width: 0;
 }
 
-@media (max-width: 900px) {
+@include respond-to(md) {
   .layout {
     grid-template-columns: 1fr;
   }

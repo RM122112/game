@@ -44,7 +44,9 @@ function resetGame() {
   </main>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '@/styles/abstracts' as *;
+
 .guess-game {
   display: grid;
   justify-items: center;
@@ -52,9 +54,9 @@ function resetGame() {
   margin: 120px 130px;
   padding: 12px 12px;
   text-align: center;
-  border: red 1px solid;
-  border-radius: 2.5rem;
-  background: linear-gradient(90deg, rgba(255, 0, 0, 0.1) 0%, rgba(255, 0, 0, 0.2) 100%);
+  border: 1px solid var(--error);
+  border-radius: $radius-lg;
+  background: linear-gradient(90deg, var(--error-bg) 0%, var(--error-bg-strong) 100%);
   width: 120px;
   height: 120px;
 }

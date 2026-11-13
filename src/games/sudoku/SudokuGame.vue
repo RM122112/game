@@ -224,13 +224,15 @@ onUnmounted(() => {
   </main>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
+@use '@/styles/abstracts' as *;
+
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding: 1.5rem 0.5rem 3rem;
+  gap: $space-4;
+  padding: $space-5 $space-2 $space-6;
 }
 
 h1 {
@@ -278,23 +280,23 @@ h1 {
   align-items: center;
   justify-content: center;
   background: color-mix(in srgb, var(--paper) 85%, transparent);
-  font-size: 1.2rem;
+  font-size: $font-size-xl;
 }
 
 .overlay.win strong {
-  font-size: 2rem;
+  font-size: $font-size-display;
 }
 
 .pad {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 0.4rem;
+  gap: $space-1;
   width: min(92vw, 30rem);
 }
 
 .pad button {
-  font-size: 1.3rem;
-  padding: 0.6rem 0;
+  font-size: $font-size-xl;
+  padding: $space-2 0;
 }
 
 .pad button.done {
@@ -302,12 +304,12 @@ h1 {
 }
 
 .pad .erase {
-  font-size: 0.95rem;
+  font-size: $font-size-sm;
 }
 
 .hint {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: $font-size-sm;
   margin: 0;
   text-align: center;
 }

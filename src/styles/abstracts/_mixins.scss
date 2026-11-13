@@ -1,0 +1,11 @@
+@mixin focus-ring {
+  outline: 3px solid var(--focus-ring);
+  outline-offset: 2px;
+}
+
+@mixin card-surface {
+  background: var(--paper);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+}

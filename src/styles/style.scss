@@ -1,0 +1,22 @@
+@use 'base/reset';
+@use 'base/themes';
+@use 'base/typography';
+@use 'utilities/helpers';
+
+button {
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+}
+
+button:hover:not(:disabled) {
+  border-color: var(--ink);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}

@@ -4,6 +4,13 @@
   </div>
 </template>
 
-<style scoped>
-.soon { display: grid; place-items: center; min-height: 60vh; font-size: 1.3rem; }
+<style scoped lang="scss">
+@use '@/styles/abstracts' as *;
+
+.soon {
+  display: grid;
+  place-items: center;
+  min-height: 60vh;
+  font-size: $font-size-xl;
+}
 </style>
