@@ -11,7 +11,6 @@ defineEmits<{ select: [] }>()
       type="button"
       class="card"
       :class="{active}"
-      :style="{ background: game.thumbnail ? undefined : game.color }"
       :aria-pressed="active"
       @click="$emit('select')"
   >
